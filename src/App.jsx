@@ -17,9 +17,10 @@ function App() {
   const [hours, setHours] = useState(4);
   const [minutes, setMinutes] = useState(30);
   const [iconKey, setKey] = useState("02d");
+  const [feels, setFeels] = useState(10);
 
   async function handleClick(weatherInfo) {
-    setTemp(Math.floor(weatherInfo.main.temp).toString());
+    setTemp(Math.floor(weatherInfo.main.temp));
     setLocation(weatherInfo.name);
     setWeather(weatherInfo.weather[0].description);
     setWind(weatherInfo.wind.speed);
@@ -30,9 +31,15 @@ function App() {
       setGusts(weatherInfo.wind.speed);
     }
     let date = new Date(weatherInfo.dt * 1000);
-    setHours(date.getHours());
+    setHours(
+      date.getHours() +
+        date.getTimezoneOffset() / 60 +
+        weatherInfo.timezone / 3600
+    );
     setMinutes(date.getMinutes());
     setKey(weatherInfo.weather[0].icon);
+    setFeels(Math.floor(weatherInfo.main.feels_like));
+    console.log(weatherInfo);
   }
 
   return (
@@ -43,7 +50,7 @@ function App() {
         icon={icons[iconKey]}
         weather={weather}
         temp={temp + "°C"}
-        realFeel={"10" + "°C"}
+        realFeel={feels + "°C"}
         wind={wind + "m/s"}
         gusts={gusts + "m/s"}
         humidity={humidity + "%"}
