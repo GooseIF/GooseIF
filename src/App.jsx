@@ -39,7 +39,6 @@ function App() {
     setMinutes(date.getMinutes());
     setKey(weatherInfo.weather[0].icon);
     setFeels(Math.floor(weatherInfo.main.feels_like));
-    console.log(weatherInfo);
   }
 
   return (
