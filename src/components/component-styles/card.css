@@ -31,6 +31,7 @@ body {
   position: absolute;
   right: 0;
   z-index: 999999;
+  opacity: 90%;
 }
 
 .current {

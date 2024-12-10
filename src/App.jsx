@@ -4,9 +4,19 @@ import "./components/component-styles/card.css";
 import icons from "./icons.js";
 import MapComponent from "./components/openLayersMap.jsx";
 import { useGeographic } from "ol/proj.js";
+import fetchWeather from "./weatherApi.js";
 
 function App() {
   useGeographic();
+  window.onload = onLoad;
+  async function onLoad() {
+    fetchWeather(-0.135278, 51.510357)
+      .then((data) => data.json())
+      .then((data) => {
+        handleWeather(data);
+      });
+  }
+
   const [info, setInfo] = useState();
   const [weather, setWeather] = useState("sunny");
   const [temp, setTemp] = useState(0);
@@ -19,7 +29,7 @@ function App() {
   const [iconKey, setKey] = useState("02d");
   const [feels, setFeels] = useState(10);
 
-  async function handleClick(weatherInfo) {
+  async function handleWeather(weatherInfo) {
     setTemp(Math.floor(weatherInfo.main.temp));
     setLocation(weatherInfo.name);
     setWeather(weatherInfo.weather[0].description);
@@ -54,7 +64,7 @@ function App() {
         gusts={gusts + "m/s"}
         humidity={humidity + "%"}
       />
-      <MapComponent info={info} setter={setInfo} onNewInfo={handleClick} />
+      <MapComponent info={info} setter={setInfo} onNewInfo={handleWeather} />
     </>
   );
 }
