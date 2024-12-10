@@ -36,7 +36,7 @@ function MapComponent(props) {
 
   return (
     <div
-      style={{ height: "100vh", width: "100%" }}
+      style={{ height: "99vh", width: "100%" }}
       id="map"
       className="map-container"
     />
