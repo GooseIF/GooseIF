@@ -1,58 +1,53 @@
 .container-row {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-bottom: 16px;
-    border-bottom: 1px solid;
-    padding-bottom: 8px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  border-bottom: 1px solid;
+  padding-bottom: 8px;
 }
-
 
 body {
-    font-family: "Lexend", sans-serif;
-
+  font-family: "Lexend", sans-serif;
 }
 
-
 * {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
 .container-column {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .weatherContainer {
-    background-color: #F7F7F7;
-    padding: 16px;
-    border: 2px solid #4A4A48;
-    width: 200px;
-    border-radius: 16px;
-    position: absolute;
-    right: 0;
-    z-index: 999999;
+  background-color: #f7f7f7;
+  padding: 16px;
+  border: 2px solid #4a4a48;
+  width: 200px;
+  border-radius: 16px;
+  position: absolute;
+  right: 0;
+  z-index: 999999;
 }
 
-
-
 .current {
-    font-size: 48px;
+  font-size: 48px;
 }
 
 .wind-info {
-    justify-self: end;
+  justify-self: end;
 }
 
 .wind {
-    border: 0px;
-    padding: 0px;
-    margin: 0px;
+  border: 0px;
+  padding: 0px;
+  margin: 0px;
 }
 
 .image {
-    width: 64px;
-    height: 64px;
+  width: 64px;
+  height: 64px;
 }

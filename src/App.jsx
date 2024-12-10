@@ -11,33 +11,29 @@ function App() {
   const [weather, setWeather] = useState("sunny");
   const [temp, setTemp] = useState(0);
   const [location, setLocation] = useState("London");
-  const [wind, setWind] = useState(3)
-  const [gusts, setGusts] = useState(5)
-  const [humidity, setHumidity] = useState(92)
-  const [hours, setHours] = useState(4)
-  const [minutes, setMinutes] = useState(30)
-  const [iconKey, setKey] = useState("02d")
+  const [wind, setWind] = useState(3);
+  const [gusts, setGusts] = useState(5);
+  const [humidity, setHumidity] = useState(92);
+  const [hours, setHours] = useState(4);
+  const [minutes, setMinutes] = useState(30);
+  const [iconKey, setKey] = useState("02d");
 
   async function handleClick(weatherInfo) {
     setTemp(Math.floor(weatherInfo.main.temp).toString());
     setLocation(weatherInfo.name);
     setWeather(weatherInfo.weather[0].description);
-    setWind(weatherInfo.wind.speed)
-    setHumidity(weatherInfo.main.humidity)
+    setWind(weatherInfo.wind.speed);
+    setHumidity(weatherInfo.main.humidity);
     if (weatherInfo.wind.gust) {
-      setGusts(weatherInfo.wind.gust)
+      setGusts(weatherInfo.wind.gust);
+    } else {
+      setGusts(weatherInfo.wind.speed);
     }
-    else {
-      setGusts(weatherInfo.wind.speed)
-    }
-    let date = new Date(weatherInfo.dt * 1000)
-    setHours(date.getHours())
-    setMinutes(date.getMinutes())
-    setKey(weatherInfo.weather[0].icon)
-    console.log(weatherInfo);
+    let date = new Date(weatherInfo.dt * 1000);
+    setHours(date.getHours());
+    setMinutes(date.getMinutes());
+    setKey(weatherInfo.weather[0].icon);
   }
-
-  console.log(icons)
 
   return (
     <>

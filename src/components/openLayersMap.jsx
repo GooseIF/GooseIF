@@ -1,10 +1,9 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import { Map, View } from "ol";
 import TileLayer from "ol/layer/Tile";
 import OSM from "ol/source/OSM";
 import "ol/ol.css";
 import fetchWeather from "../weatherApi";
-let newInfo;
 
 function MapComponent(props) {
   useEffect(() => {
