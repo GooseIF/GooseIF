@@ -1,10 +1,9 @@
-const key = "5d0b38825ba9e80dee5e6947e69e6ef4"
+const key = "5d0b38825ba9e80dee5e6947e69e6ef4";
 
+export default function fetchWeather(lon, lat) {
+  const srcUrl = "https://api.openweathermap.org/data/2.5/weather?";
 
-export default function fetchWeather(lat, lon) {
-const srcUrl = "https://api.openweathermap.org/data/2.5/weather?"
+  const url = `${srcUrl}lat=${lat}&lon=${lon}&units=metric&appid=${key}`;
 
-const url = `${srcUrl}lat=${lat}&lon=${lon}&units=metric&appid=${key}`
-
-return fetch (url)
+  return fetch(url);
 }

@@ -1,26 +1,19 @@
-import fetchWeather from "./weatherApi.js";
 import { useState } from "react";
-import fetchLocation from "./locationApi.js";
 import TodayCard from "./components/TodayCard.jsx";
 import { useRef } from "react";
 
+import MapComponent from "./components/openLayersMap.jsx";
+import { useGeographic } from "ol/proj.js";
+
 function App() {
-  const baseRef = useRef();
+  useGeographic();
+  const [info, setInfo] = useState();
+  const inputRef = useRef();
   const [weather, setWeather] = useState("sunny");
   const [temp, setTemp] = useState(0);
   const [location, setLocation] = useState("London");
 
-  async function handleClick() {
-    const coords = await fetchLocation(baseRef.current.value)
-      .then((data) => data.json())
-      .then((data) => {
-        const result = [data[0].lat, data[0].lon];
-        return result;
-      });
-    const weatherInfo = await fetchWeather(coords[0], coords[1]).then((data) =>
-      data.json()
-    );
-
+  async function handleClick(weatherInfo) {
     setTemp(Math.floor(weatherInfo.main.temp).toString() + "°C");
     setLocation(weatherInfo.name);
     setWeather(weatherInfo.weather[0].description);
@@ -29,15 +22,9 @@ function App() {
 
   return (
     <>
-      <input type="text" ref={baseRef} />
-      <button
-        onClick={() => {
-          handleClick();
-        }}
-      >
-        click me for weather
-      </button>
       <TodayCard name={location} weather={weather} temp={temp}></TodayCard>
+
+      <MapComponent info={info} setter={setInfo} onNewInfo={handleClick} />
     </>
   );
 }
