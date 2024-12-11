@@ -17,7 +17,7 @@ const icons = {
   "10n": "rainy-4.svg",
   "11n": "thunder.svg",
   "13n": "snowy-6.svg",
-  "50n": "cloudy",
+  "50n": "cloudy.svg",
 };
 
 export default icons;
