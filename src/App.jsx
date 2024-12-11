@@ -46,7 +46,9 @@ function App() {
         date.getTimezoneOffset() / 60 +
         weatherInfo.timezone / 3600
     );
-    setMinutes(date.getMinutes());
+    let minutes = date.getMinutes()
+    if (minutes < 10) {minutes = "0" + minutes}; 
+    setMinutes(minutes);
     setKey(weatherInfo.weather[0].icon);
     setFeels(Math.floor(weatherInfo.main.feels_like));
   }

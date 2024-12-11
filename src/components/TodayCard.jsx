@@ -7,13 +7,13 @@ export default function TodayCard(props) {
           <div className="">{props.city}</div>
           <div className="">{props.time}</div>
         </section>
-        <section className="weather container-row">
-          <div>
+        <section className="weather">
+          <div className="about_weather">
             <img src={props.icon} className="image"></img>
-            <div>{props.weather}</div>
+            <div className="description">{props.weather}</div>
           </div>
 
-          <div className="temp container-column">
+          <div className="temp">
             <div className="current">{props.temp}</div>
             <div className="feelsLike"> feels like {props.realFeel}</div>
           </div>
@@ -21,8 +21,8 @@ export default function TodayCard(props) {
         <section className="wind&humidity">
           <div className="wind container-row">
             <div className="">
-              <h4>Wind</h4>
-              <h4>Gusts</h4>
+              <h4>wind</h4>
+              <h4>gusts</h4>
               <h4>humidity</h4>
             </div>
             <div>

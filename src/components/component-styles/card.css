@@ -2,9 +2,12 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-bottom: 16px;
   border-bottom: 1px solid;
   padding-bottom: 8px;
+}
+
+.header {
+  align-items: center;
 }
 
 body {
@@ -25,17 +28,16 @@ body {
 .weatherContainer {
   background-color: #f7f7f7;
   padding: 16px;
-  border: 2px solid #4a4a48;
+  border: 2px solid #0000001e;
   width: 200px;
-  border-radius: 16px;
+  border-bottom-left-radius: 16px;
   position: absolute;
   right: 0;
   z-index: 999999;
-  opacity: 90%;
 }
 
 .current {
-  font-size: 48px;
+  font-size: 32px;
 }
 
 .wind-info {
@@ -51,4 +53,35 @@ body {
 .image {
   width: 64px;
   height: 64px;
+}
+
+.about_weather {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+align-items: center;
+}
+
+.weather {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.temp {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  border-bottom: 1px solid;
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+  margin-top: 8px;
+  padding-top: 8px;
+}
+
+.description {
+  margin-top: -8px;
 }
