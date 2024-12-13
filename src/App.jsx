@@ -30,6 +30,7 @@ function App() {
   const [feels, setFeels] = useState(10);
 
   async function handleWeather(weatherInfo) {
+    console.log(weatherInfo)
     setTemp(Math.floor(weatherInfo.main.temp));
     setLocation(weatherInfo.name);
     setWeather(weatherInfo.weather[0].description);
@@ -40,12 +41,14 @@ function App() {
     } else {
       setGusts(weatherInfo.wind.speed);
     }
-    let date = new Date(weatherInfo.dt * 1000);
+    let date = new Date();
+    if (date.getUTCHours() + (weatherInfo.timezone / 3600) > 24 ) {
+      setHours(date.getUTCHours() + (weatherInfo.timezone / 3600) - 24)
+    }
+    else {
     setHours(
-      date.getHours() +
-        date.getTimezoneOffset() / 60 +
-        weatherInfo.timezone / 3600
-    );
+      date.getUTCHours() + (weatherInfo.timezone / 3600) 
+    );}
     let minutes = date.getMinutes()
     if (minutes < 10) {minutes = "0" + minutes}; 
     setMinutes(minutes);
